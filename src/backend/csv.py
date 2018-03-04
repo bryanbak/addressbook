@@ -41,8 +41,6 @@ class CsvBackend():
 		searchTermNoPunc = removePunctuationAndLowercase(st)
 		for entry in self.addressEntries:
 			if searchTermNoPunc in entry.addressString:
-				print("search: " + searchTermNoPunc)
-				print("entry: " + entry.addressString)
 				results.append(entry)
 		return results
 
