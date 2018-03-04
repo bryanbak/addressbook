@@ -1,3 +1,13 @@
-docker build -t addressbook .
+# Build
+```bash
+build.sh
+```
 
-docker run -it --mount type=bind,source="$(pwd)/data/address_book.csv",target=/app/address_book.csv addressbook
+# Run
+```bash
+run.sh
+```
+
+Docker toolbox for windows handles volumes weird
+Default access only to C:\Users which gets mapped as /c/Users
+If you need more access you have to add shared folders via virtualbox (see: https://docs.docker.com/toolbox/toolbox_install_windows/)
