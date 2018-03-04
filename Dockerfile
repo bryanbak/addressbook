@@ -11,5 +11,8 @@ ADD requirements.txt /app
 # Install any needed packages specified in requirements.txt
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
+ENV interactive ""
+ENV searchterm ""
+
 # Run app.py when the container launches
-CMD ["python", "app.py"]
+CMD python app.py ${interactive} "${searchterm}"
