@@ -1,0 +1,6 @@
+1. Search by full last name
+2. Search by partial last name
+3. Search by full name (last, first)
+4. Search by various parts of address
+5. Handle abbreviations as well as non abbreviated words
+	i.e. St St. Street

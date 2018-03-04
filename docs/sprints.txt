@@ -1,0 +1,19 @@
+Sprint 1
+---------
+Build basic infrastructure
+	* Configure docker container
+	* Read in text file of addresses
+	* Take search string input from user
+	* Return results
+Implement story #1 for basic last name search
+
+Sprint 2
+---------
+Implement user stories #2-4
+Unit tests to verify all search scenarios work properly
+Add in any missing documentation
+
+Sprint 3
+---------
+Build up list of common abbreviations and their full name counterpart
+Implement user story #5
