@@ -2,6 +2,7 @@ from AddressEntry import AddressEntry
 from backend.csv import CsvBackend
 
 db = CsvBackend()
+db.connect()
 
 def printResults(results):
 	print("\n", str(len(results)) + " results found\n")

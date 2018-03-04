@@ -21,13 +21,15 @@ class CsvBackend():
 	""" Reads Address data from address_book.csv file """
 	def __init__(self):
 		self.addressEntries = []
+	
+	def connect(self):
 		with open('address_book.csv', newline='') as addressFile:
 			csvReader = csv.reader(addressFile, delimiter=',', quotechar='"')
 			for row in csvReader:
 				entry = AddressEntry(row)
 				entry.addressString = getCombinedAddress(entry)
 				self.addressEntries.append(entry)
-
+	
 	def search(self, st):
 		results = []
 		searchTermNoPunc = removePunctuationAndLowercase(st)
