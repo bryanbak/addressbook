@@ -68,9 +68,9 @@ class CsvBackendTests(unittest.TestCase):
 		
 	@unittest.skip("this is not implemented yet")
 	def test_abbreviations(self):
-		results = self.csvBackend.search("st")
+		results = self.csvBackend.search("ave")
 		self.assertEqual(len(results), 1)
-		results = self.csvBackend.search("street")
+		results = self.csvBackend.search("avenue")
 		self.assertEqual(len(results), 1)
 		
 if __name__ == '__main__':
