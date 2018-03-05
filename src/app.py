@@ -21,6 +21,9 @@ with CementApp("addressbook") as app:
 	app.run()
 	
 	if app.pargs.interactive:
+		print("Running addressbook lookup in interactive mode")
+		print("Type 'exit' to exit the program\n")
+		
 		searchTerm = ''
 
 		while True:
