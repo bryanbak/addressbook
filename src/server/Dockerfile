@@ -5,14 +5,12 @@ FROM python:3.6-slim
 WORKDIR /app
 
 # Copy src code and requirements file into the container at /app
-ADD src/. /app
-ADD requirements.txt /app
+ADD . /app
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
-ENV interactive ""
-ENV searchterm ""
+EXPOSE 80
 
 # Run app.py when the container launches
-CMD python app.py ${interactive} "${searchterm}"
+CMD ["python", "server.py"]

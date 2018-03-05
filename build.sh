@@ -1,3 +1,5 @@
 #!/bin/bash
 
-docker build -t addressbook .
+( cd src/server && docker build -t addressbook-server . )
+
+cd src/client && docker build -t addressbook-client .
