@@ -17,3 +17,9 @@ Sprint 3
 ---------
 Build up list of common abbreviations and their full name counterpart
 Implement user story #5
+
+Sprint 4
+---------
+Move backend code into its own server container
+Remove need for backend in client and instead query server application
+Provide args for specifying server ip and port with sensible defaults
