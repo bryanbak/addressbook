@@ -1,4 +1,11 @@
-#!/bin/sh
+#!/bin/bash
+
+display_usage() {
+	echo "usage: run.sh [-i | --interactive] [--csvpath <path>] [<searchterm>]"
+	echo "if run in interactive mode <searchterm> is ignored"
+	echo "if not in interactive mode then <searchterm> is required"
+	echo "csvpath defaults to data/address_book.csv if omitted"
+}
 
 while [[ $# -gt 0 ]]
 do
@@ -13,10 +20,16 @@ case $key in
     -i|--interactive)
     INTERACTIVE="-i"
     shift # past argument
-    shift # past value
     ;;
-	*)    # search term
-    SEARCHTERM="$1"
+	*)    # unknown value
+	SEARCHTERM="$1"
+	if [[ ${SEARCHTERM:0:1} == "-" ]]
+	then
+		echo "unknown argument $1"
+		display_usage
+		exit 1
+	fi
+    
     shift # past argument
     ;;
 esac
@@ -24,10 +37,7 @@ done
 
 if [ "$SEARCHTERM" = "" ] && [ "$INTERACTIVE" = "" ]
 then
-	echo "usage: run.sh [-i | --interactive] [--csvpath <path>] [<searchterm>]"
-	echo "if run in interactive mode <searchterm> is ignored"
-	echo "if not in interactive mode then <searchterm> is required"
-	echo "csvpath defaults to data/address_book.csv if omitted"
+	display_usage
 	exit 1
 fi
 
