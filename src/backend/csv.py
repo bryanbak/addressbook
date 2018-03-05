@@ -3,8 +3,8 @@ import re
 from AddressEntry import AddressEntry
 
 def removePunctuationAndLowercase(stringWithPunc):
-	noPunc = re.sub(r'[^\w\s]', '', stringWithPunc)
-	collapseSpaces = re.sub(r'\s\s+', ' ', noPunc)
+	noPunc = re.sub(r"[^\w\s]", "", stringWithPunc)
+	collapseSpaces = re.sub(r"\s\s+", " ", noPunc)
 	return collapseSpaces.lower().strip()
 	
 def getCombinedAddress(addressEntry):
@@ -17,7 +17,7 @@ def getCombinedAddress(addressEntry):
 		addressEntry.state,
 		addressEntry.zip
 	]
-	return removePunctuationAndLowercase(' '.join(addressArray))
+	return removePunctuationAndLowercase(" ".join(addressArray))
 	
 def populateEntryFromCsvRow(entry, row):
 	entry.firstName = row[0]
@@ -51,14 +51,14 @@ class CsvBackend():
 
 class CsvFileNormalizer():
 	def __init__(self, fileName):
-		self.fileReader = open(fileName, 'r', newline='')
+		self.fileReader = open(fileName, "r", newline="")
 		
 	def __iter__(self):
 		return self
 		
 	def __next__(self):
 		line = self.fileReader.readline()
-		if line == '':
+		if line == "":
 			self.fileReader.close()
 			raise StopIteration
 		return line.replace("“", "\"")

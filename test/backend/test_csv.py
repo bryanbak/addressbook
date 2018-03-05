@@ -73,5 +73,5 @@ class CsvBackendTests(unittest.TestCase):
 		results = self.csvBackend.search("avenue")
 		self.assertEqual(len(results), 1)
 		
-if __name__ == '__main__':
+if __name__ == "__main__":
 	unittest.main()

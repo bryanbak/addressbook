@@ -15,8 +15,8 @@ def printResults(results):
 with CementApp("addressbook") as app:
 	app.setup()
 	
-	app.args.add_argument('-i', '--interactive', action='store_true', dest='interactive', help='interactive mode')
-	app.args.add_argument('extra_arguments', action='store', nargs='*')
+	app.args.add_argument("-i", "--interactive", action="store_true", dest="interactive", help="interactive mode")
+	app.args.add_argument("extra_arguments", action="store", nargs="*")
 	
 	app.run()
 	
@@ -24,11 +24,11 @@ with CementApp("addressbook") as app:
 		print("Running addressbook lookup in interactive mode")
 		print("Type 'exit' to exit the program\n")
 		
-		searchTerm = ''
+		searchTerm = ""
 
 		while True:
 			searchTerm = input("search addresses: ")
-			if searchTerm == 'exit':
+			if searchTerm == "exit":
 				break
 			printResults(db.search(searchTerm))
 	else:
