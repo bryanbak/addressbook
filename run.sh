@@ -22,6 +22,15 @@ case $key in
 esac
 done
 
+if [ "$SEARCHTERM" = "" ] && [ "$INTERACTIVE" = "" ]
+then
+	echo "usage: run.sh [-i | --interactive] [--csvpath <path>] [<searchterm>]"
+	echo "if run in interactive mode <searchterm> is ignored"
+	echo "if not in interactive mode then <searchterm> is required"
+	echo "csvpath defaults to data/address_book.csv if omitted"
+	exit 1
+fi
+
 CSVPATH="${CSVPATH:-$(pwd)/data/address_book.csv}"
 
 docker run -it --mount type=bind,source="$CSVPATH",target=/app/address_book.csv -e interactive="$INTERACTIVE" -e searchterm="$SEARCHTERM" addressbook
