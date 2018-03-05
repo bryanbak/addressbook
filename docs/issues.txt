@@ -1,0 +1,22 @@
+# Issues
+Ran into a networking issue while working on Sprint 3 that I didn't have time to resolve.
+I tried putting client and server directories within src and making a Dockerfile in each new dir
+so that I could have them totally separate in their own containers. Something like:
+
+src
+	client
+		app.py
+		Dockerfile
+	server
+		Dockerfile
+		server.py
+		AddressEntry.py
+		backend
+			csv.py
+			
+The server.py file was a simple Flask app with a search function. I removed the CsvBackend code from
+the app.py in client and replaced it with an HTTPClient that made api calls to the Flask server.
+
+I was able to get it all working locally with my Docker toolbox setup, but when I sent it to a friend
+with a more legit docker setup on a Mac he wasn't able to get the client to make calls to the webserver
+without the connection being refused.
