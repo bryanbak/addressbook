@@ -36,7 +36,7 @@ class CsvBackendTests(unittest.TestCase):
 		self.assertEqual(len(results), 1)
 		
 	def test_fullname_search(self):
-		results = self.csvBackend.search("bryan bakotich")
+		results = self.csvBackend.search("bryan   bakotich")
 		self.assertEqual(len(results), 1)
 		results = self.csvBackend.search("bakotich, bryan")
 		self.assertEqual(len(results), 1)
@@ -54,7 +54,7 @@ class CsvBackendTests(unittest.TestCase):
 		self.assertEqual(len(results), 1)
 		
 	def test_street_search(self):
-		results = self.csvBackend.search("4822 2nd ave")
+		results = self.csvBackend.search("4822  2nd ave")
 		self.assertEqual(len(results), 1)
 		results = self.csvBackend.search("4822")
 		self.assertEqual(len(results), 1)
