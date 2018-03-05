@@ -1,6 +1,6 @@
 import unittest
-import server.backend.csv
-from server.backend.csv import CsvBackend
+import backend.csv
+from backend.csv import CsvBackend
 from AddressEntry import AddressEntry
 
 class CsvBackendTests(unittest.TestCase):
@@ -14,11 +14,11 @@ class CsvBackendTests(unittest.TestCase):
 		row.append("Tacoma")
 		row.append("WA")
 		row.append("18")
-		server.backend.csv.populateEntryFromCsvRow(entry, row)
+		backend.csv.populateEntryFromCsvRow(entry, row)
 		self.csvBackend.addressEntries.append(entry)
 		
 	def test_removePunctuation(self):
-		punctuationRemoved = server.backend.csv.removePunctuationAndLowercase("This, had  #punctuation.    ")
+		punctuationRemoved = backend.csv.removePunctuationAndLowercase("This, had  #punctuation.    ")
 		self.assertEqual(punctuationRemoved, "this had punctuation")
 		
 	def test_lastname_search(self):

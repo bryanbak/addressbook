@@ -33,5 +33,4 @@ fi
 
 CSVPATH="${CSVPATH:-$(pwd)/data/address_book.csv}"
 
-docker run -d -p 4000:80 --mount type=bind,source="$CSVPATH",target=/app/address_book.csv addressbook-server
-docker run -it -e interactive="$INTERACTIVE" -e searchterm="$SEARCHTERM" addressbook-client
+docker run -it --mount type=bind,source="$CSVPATH",target=/app/address_book.csv -e interactive="$INTERACTIVE" -e searchterm="$SEARCHTERM" addressbook
