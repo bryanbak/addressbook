@@ -38,3 +38,9 @@ if using the toolbox. If you need more access you have to add shared folders via
 
 # Search strings
 Pretty much anything should work. You can search by name or any of the various parts of the address
+
+# Tests
+Unit tests can be run in their own container by executing the test script
+```bash
+test.sh
+```

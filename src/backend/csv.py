@@ -16,6 +16,15 @@ def getCombinedAddress(addressEntry):
 		addressEntry.zip
 	]
 	return removePunctuationAndLowercase(''.join(addressArray))
+	
+def populateEntryFromCsvRow(entry, row):
+	entry.firstName = row[0]
+	entry.lastName = row[1]
+	entry.street = row[2]
+	entry.city = row[3]
+	entry.state = row[4]
+	entry.zip = row[5]
+	entry.addressString = getCombinedAddress(entry)
 
 class CsvBackend():
 	""" Reads Address data from address_book.csv file """
@@ -27,13 +36,7 @@ class CsvBackend():
 		csvReader = csv.reader(addressFile, delimiter=',', quotechar='"')
 		for row in csvReader:
 			entry = AddressEntry()
-			entry.firstName = row[0]
-			entry.lastName = row[1]
-			entry.street = row[2]
-			entry.city = row[3]
-			entry.state = row[4]
-			entry.zip = row[5]
-			entry.addressString = getCombinedAddress(entry)
+			populateEntryFromCsvRow(entry, row)
 			self.addressEntries.append(entry)
 	
 	def search(self, st):
