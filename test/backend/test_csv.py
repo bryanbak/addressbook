@@ -10,7 +10,7 @@ class CsvBackendTests(unittest.TestCase):
 		row = []
 		row.append("Bryan")
 		row.append("Bakotich")
-		row.append("4822 N 26th St.")
+		row.append("4822 2nd Ave.")
 		row.append("Tacoma")
 		row.append("WA")
 		row.append("18")
@@ -18,8 +18,8 @@ class CsvBackendTests(unittest.TestCase):
 		self.csvBackend.addressEntries.append(entry)
 		
 	def test_removePunctuation(self):
-		punctuationRemoved = backend.csv.removePunctuationAndLowercase("This, had #punctuation.")
-		self.assertEqual(punctuationRemoved, "thishadpunctuation")
+		punctuationRemoved = backend.csv.removePunctuationAndLowercase("This, had  #punctuation.    ")
+		self.assertEqual(punctuationRemoved, "this had punctuation")
 		
 	def test_lastname_search(self):
 		results = self.csvBackend.search("Bakotich")
@@ -54,12 +54,17 @@ class CsvBackendTests(unittest.TestCase):
 		self.assertEqual(len(results), 1)
 		
 	def test_street_search(self):
-		results = self.csvBackend.search("4822 n 26th st")
+		results = self.csvBackend.search("4822 2nd ave")
 		self.assertEqual(len(results), 1)
 		results = self.csvBackend.search("4822")
 		self.assertEqual(len(results), 1)
-		results = self.csvBackend.search("26th st")
+		results = self.csvBackend.search("2nd ave")
 		self.assertEqual(len(results), 1)
+		
+	def test_dave(self):
+		""" searching for dave was returning people with 2nd ave addresses """
+		results = self.csvBackend.search("dave")
+		self.assertEqual(len(results), 0)
 		
 	@unittest.skip("this is not implemented yet")
 	def test_abbreviations(self):

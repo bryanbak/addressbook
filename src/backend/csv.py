@@ -3,7 +3,9 @@ import re
 from AddressEntry import AddressEntry
 
 def removePunctuationAndLowercase(stringWithPunc):
-	return re.sub(r'[^\w]', '', stringWithPunc).lower()
+	noPunc = re.sub(r'[^\w\s]', '', stringWithPunc)
+	collapseSpaces = re.sub(r'\s\s+', ' ', noPunc)
+	return collapseSpaces.lower().strip()
 	
 def getCombinedAddress(addressEntry):
 	addressArray = [
@@ -15,7 +17,7 @@ def getCombinedAddress(addressEntry):
 		addressEntry.state,
 		addressEntry.zip
 	]
-	return removePunctuationAndLowercase(''.join(addressArray))
+	return removePunctuationAndLowercase(' '.join(addressArray))
 	
 def populateEntryFromCsvRow(entry, row):
 	entry.firstName = row[0]
